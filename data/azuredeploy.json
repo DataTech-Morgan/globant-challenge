@@ -1,0 +1,127 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "type": "string",
+      "metadata": {
+        "description": "The username for the SQL server administrator"
+      }
+    },
+    "adminPassword": {
+      "type": "securestring",
+      "metadata": {
+        "description": "The password for the SQL server administrator"
+      }
+    },
+    "databaseName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the SQL database"
+      }
+    },
+    "storageAccountName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the Azure Data Lake Storage Gen2 account"
+      }
+    },
+    "containerInstanceName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the Azure Container Instance"
+      }
+    },
+    "flaskAppImage": {
+      "type": "string",
+      "metadata": {
+        "description": "The Docker image for the Flask app"
+      }
+    }
+  },
+  "variables": {
+    "location": "[resourceGroup().location]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Sql/servers",
+      "apiVersion": "2019-06-01-preview",
+      "name": "[concat(uniqueString(resourceGroup().id), '-sqlserver')]",
+      "location": "[variables('location')]",
+      "properties": {
+        "administratorLogin": "[parameters('adminUsername')]",
+        "administratorLoginPassword": "[parameters('adminPassword')]"
+      },
+      "resources": [
+        {
+          "type": "databases",
+          "apiVersion": "2019-06-01-preview",
+          "name": "[concat(parameters('databaseName'), '-db')]",
+          "location": "[variables('location')]",
+          "dependsOn": [
+            "[concat('Microsoft.Sql/servers/', concat(uniqueString(resourceGroup().id), '-sqlserver'))]"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-04-01",
+      "name": "[parameters('storageAccountName')]",
+      "location": "[variables('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "accessTier": "Hot",
+        "allowBlobPublicAccess": false
+      }
+    },
+    {
+      "type": "Microsoft.ContainerInstance/containerGroups",
+      "apiVersion": "2021-04-01",
+      "name": "[parameters('containerInstanceName')]",
+      "location": "[variables('location')]",
+      "properties": {
+        "containers": [
+          {
+            "name": "flask-app",
+            "properties": {
+              "image": "[parameters('flaskAppImage')]",
+              "resources": {
+                "requests": {
+                  "cpu": 1,
+                  "memoryInGB": 1.5
+                }
+              }
+            }
+          }
+        ],
+        "restartPolicy": "Always",
+        "osType": "Linux"
+      },
+      "dependsOn": [
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]"
+      ]
+    }
+  ],
+  "outputs": {
+    "sqlServerName": {
+      "type": "string",
+      "value": "[concat(uniqueString(resourceGroup().id), '-sqlserver')]"
+    },
+    "databaseName": {
+      "type": "string",
+      "value": "[parameters('databaseName')]"
+    },
+    "storageAccountName": {
+      "type": "string",
+      "value": "[parameters('storageAccountName')]"
+    },
+    "containerInstanceName": {
+      "type": "string",
+      "value": "[parameters('containerInstanceName')]"
+    }
+  }
+}

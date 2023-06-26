@@ -42,13 +42,13 @@ Exist two pipelines: one for ETL operations for main tables and the second for b
 Databricks notebooks is required for transform data and load them into another path such as UV or DV
 
 ### Azure App Services for API solution
-Solution uses app services to mount two scripts:
- 1. api.py executes flask solutions to implement API
- 2. connect-azure.ps1 connect to azure synapse and load the registers given
+Solution uses app services to mount api.py script:
+
+api.py executes flask solutions to implement API and connect to azure synapse using pyodbc to ingest registers
 
 ## Results
 
  - The firts pipeline extract, transform and load csv files into synapse main and backup tables
  - The second pipeline transform and load AVRO files into synapse main tables when it is required
  - Databricks enables data manipulation and analysis in the process
- - App services and flask implement the API solution. Powershell script is deployed for Azure connections
+ - App services and flask implement the API solution.

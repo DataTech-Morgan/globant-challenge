@@ -15,7 +15,7 @@ Create a feature to backup for each table and save it in the file system in AVRO
 Create a feature to restore a certain table with its backup.
 
 ## Arquitecture
-![Alt text](image.png)
+![Alt text](challenge_arch.png)
 
 ## Proof of Functionality
 ### Load Files in ADLS Main
@@ -26,14 +26,29 @@ DV: Dimensional Vault
 ![Alt text](image-1.png)
 
 ### ADLS Backup 
-ADLS Gen 2 deployed for backup files and tables' data
+ADLS Gen 2 is deployed for backup files and tables' data. Uses pair region from main one.
+Another aproach would be use the read-access geo-zone concept. It depends on the cost and complexity
 
 ### Azure Synapse for SQL database
-Dedicated SQL Pool is deployed to query data
+Dedicated SQL Pool is deployed to query data.
+Exist two type of tables: main for principals and backup for restore data
 
 ### Azure Data factory
 Datafactory is used for move data from RV to UV or DV, depends on data's origin
 Also is required for execute databricks notebooks
+Exist two pipelines: one for ETL operations for main tables and the second for backup processes
 
 ### Azure Databricks
 Databricks notebooks is required for transform data and load them into another path such as UV or DV
+
+### Azure App Services for API solution
+Solution uses app services to mount two scripts:
+ 1. api.py executes flask solutions to implement API
+ 2. connect-azure.ps1 connect to azure synapse and load the registers given
+
+## Results
+
+ - The firts pipeline extract, transform and load csv files into synapse main and backup tables
+ - The second pipeline transform and load AVRO files into synapse main tables when it is required
+ - Databricks enables data manipulation and analysis in the process
+ - App services and flask implement the API solution. Powershell script is deployed for Azure connections

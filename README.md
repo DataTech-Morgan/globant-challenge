@@ -15,7 +15,7 @@ Create a feature to backup for each table and save it in the file system in AVRO
 Create a feature to restore a certain table with its backup.
 
 ## Arquitecture
-![Alt text](challenge_arch.png)
+![Alt text](challenge_arch_2.png)
 
 ## Proof of Functionality
 ### Load Files in ADLS Main

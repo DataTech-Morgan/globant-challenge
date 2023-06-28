@@ -1,0 +1,91 @@
+<mxfile host="65bd71144e">
+    <diagram id="_sXiNvSO6lyU-c8f1Er2" name="Page-1">
+        <mxGraphModel dx="1748" dy="414" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="24" value="" style="group;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;spacing=4;" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="-700" y="20" width="1360" height="580" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.319;entryDx=0;entryDy=0;entryPerimeter=0;" parent="24" source="22" target="24" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="Pipeline Load and Backup Data" style="swimlane;whiteSpace=wrap;html=1;" parent="24" vertex="1">
+                    <mxGeometry width="1360" height="370" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Azure Data Factory&amp;nbsp;&lt;br&gt;Moving" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="22" vertex="1">
+                    <mxGeometry x="447.60233918128654" y="240" width="150.87719298245614" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Azure Data Lake Storage Gen2 - Back&lt;br&gt;DV&lt;br&gt;UV" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" parent="22" vertex="1">
+                    <mxGeometry x="201.16959064327483" y="245" width="150.87719298245614" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" style="edgeStyle=none;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="22" source="18" target="4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" style="edgeStyle=none;html=1;" parent="22" source="5" target="47" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Azure Synapse Analytics&lt;br&gt;Dedicated SQL Pool" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" parent="22" vertex="1">
+                    <mxGeometry x="658.83" y="250" width="151.17" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" style="edgeStyle=none;html=1;" parent="22" source="47" target="49" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="47" value="Azure App Services&lt;br&gt;Flask API - PowerShell Script" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3c800;fontColor=#000000;strokeColor=#B09500;" parent="22" vertex="1">
+                    <mxGeometry x="910" y="250" width="151.17" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.user;fillColor=#D2D3D3;gradientColor=none;" parent="22" vertex="1">
+                    <mxGeometry x="1180" y="268.5" width="45" height="63" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="&lt;font style=&quot;font-size: 19px;&quot;&gt;User&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="22" vertex="1">
+                    <mxGeometry x="1160" y="230" width="85" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Azure Data Lake Storage Gen2 - Main&lt;br&gt;data/rv" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" parent="24" vertex="1">
+                    <mxGeometry x="25.146198830409354" y="40" width="150.87719298245614" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="Azure Data Factory&amp;nbsp;&lt;br&gt;Moving" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="24" vertex="1">
+                    <mxGeometry x="246.43274853801168" y="35" width="150.87719298245614" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" style="edgeStyle=none;html=1;" parent="24" source="3" target="6" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" style="edgeStyle=none;html=1;" parent="24" source="9" target="5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Azure Data Lake Storage Gen2 - Main&lt;br&gt;data/uv&lt;br&gt;data/dv" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" parent="24" vertex="1">
+                    <mxGeometry x="658.8304093567251" y="35" width="150.87719298245614" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="Azure Databricks&lt;br&gt;Cleansing/Transform" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" parent="24" vertex="1">
+                    <mxGeometry x="447.60233918128654" y="35" width="150.87719298245614" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" style="edgeStyle=none;html=1;" parent="24" source="6" target="16" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="24" source="16" target="9" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="24" source="16" target="18" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" value="Pipeline Recover Backup Data" style="swimlane;whiteSpace=wrap;html=1;" parent="24" vertex="1">
+                    <mxGeometry y="380" width="1360" height="200" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" style="edgeStyle=none;html=1;" parent="25" source="26" target="42" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="Azure Data Lake Storage Gen2 - Back&lt;br&gt;DV&lt;br&gt;UV" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" parent="25" vertex="1">
+                    <mxGeometry x="40" y="60" width="160" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" style="edgeStyle=none;html=1;" parent="25" source="42" target="43" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="Azure Data Factory&amp;nbsp;&lt;br&gt;Moving" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" parent="25" vertex="1">
+                    <mxGeometry x="330" y="55" width="150" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="Azure Synapse Analytics&lt;br&gt;Dedicated SQL Pool" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" parent="25" vertex="1">
+                    <mxGeometry x="610" y="60" width="150" height="100" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
